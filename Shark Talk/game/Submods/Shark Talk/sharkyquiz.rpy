@@ -79,7 +79,6 @@ screen shark_image(img):
 label sharky_quiz_start:
     m 7hub "I'll show you a picture and you tell me which shark it is."
     m 1hua "Ready? Let's go!"
-
     show monika at t22 with move
 
     python:
@@ -96,17 +95,16 @@ label sharky_quiz_start:
         $ correct = current["correct"]
         $ img = current["image"]
 
-        python:
-            wrong = [q["correct"] for q in shark_questions if q["correct"] != correct]
-            num_wrong = min(3, len(wrong))
-            wrong = random.sample(wrong, num_wrong)
-            answers = wrong + [correct]
-            random.shuffle(answers)
+        # Generowanie odpowiedzi – wszystko przez store (bezpieczniejsze)
+        $ wrong = [q["correct"] for q in shark_questions if q["correct"] != correct]
+        $ num_wrong = min(3, len(wrong))
+        $ wrong = random.sample(wrong, num_wrong)
+        $ answers = wrong + [correct]
+        $ random.shuffle(answers)
 
         $ question_number += 1
 
         show screen shark_image(img)
-
         m 1eua "Question [question_number] of [total_questions]!"
         m 1eua "What shark is this?"
 
