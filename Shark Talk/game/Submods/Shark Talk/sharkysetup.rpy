@@ -3,7 +3,7 @@ init -990 python in mas_submod_utils:
         author="sharkcl0ud",
         name="Shark Talk",
         description="Adds few topics about those badass creatures!!",
-        version="1.0.1",
+        version="1.0.2",
         settings_pane=None,
         version_updates={}
     )
