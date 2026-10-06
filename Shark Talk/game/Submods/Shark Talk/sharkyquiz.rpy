@@ -95,7 +95,6 @@ label sharky_quiz_start:
         $ correct = current["correct"]
         $ img = current["image"]
 
-        # Generowanie odpowiedzi – wszystko przez store (bezpieczniejsze)
         $ wrong = [q["correct"] for q in shark_questions if q["correct"] != correct]
         $ num_wrong = min(3, len(wrong))
         $ wrong = random.sample(wrong, num_wrong)
